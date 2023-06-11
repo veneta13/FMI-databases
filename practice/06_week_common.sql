@@ -135,11 +135,11 @@ SELECT TITLE, LENGTH / 60 AS LENGTH
 FROM MOVIE
 WHERE 
 YEAR = (SELECT YEAR
-			FROM MOVIE
-			WHERE TITLE = 'Terms of Endearment')
+		FROM MOVIE
+		WHERE TITLE = 'Terms of Endearment')
 AND (LENGTH < (SELECT LENGTH
-				FROM MOVIE
-				WHERE TITLE = 'Terms of Endearment')
+			   FROM MOVIE
+			   WHERE TITLE = 'Terms of Endearment')
 OR LENGTH IS NULL);
 
 -- 4 --
