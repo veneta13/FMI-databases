@@ -14,7 +14,7 @@ WHERE PRICE < ANY(SELECT PRICE
 				  FROM PC);
 
 -- 3 --
-SELECT MODEL
+SELECT TOP 1 MODEL
 FROM (
 	  (
 		  SELECT MODEL, PRICE
@@ -30,22 +30,7 @@ FROM (
 		  SELECT MODEL, PRICE
 		  FROM PRINTER)
 	  ) allProducts
-WHERE PRICE >= ALL(
-				   (
-					    SELECT PRICE
-					    FROM LAPTOP
-				   )
-					UNION
-				   (
-					    SELECT PRICE
-					    FROM PC
-				   )
-				   UNION
-				   (
-					    SELECT PRICE
-					    FROM PRINTER
-				   )
-				);
+ORDER BY PRICE DESC;
 
 -- 4 --
 SELECT DISTINCT MAKER
