@@ -24,3 +24,24 @@ UNION
 	FROM MOVIESTAR
 	WHERE YEAR(BIRTHDATE) >= 1980
 );
+
+-- Alternative solution --
+SELECT 
+    SUM(CASE
+        WHEN YEAR(birthdate) < 1960 THEN 1
+        ELSE 0
+    END) AS BEFORE1960s,
+    SUM(CASE
+        WHEN YEAR(birthdate) > 1959 AND YEAR(birthdate) < 1970 THEN 1
+        ELSE 0
+    END) AS DURING1960s,
+    SUM(CASE
+        WHEN YEAR(birthdate) > 1969 AND YEAR(birthdate) < 1980 THEN 1
+        ELSE 0
+    END) AS DURING1970s,
+    SUM(CASE
+        WHEN YEAR(birthdate) >= 1980 THEN 1
+        ELSE 0
+    END) AS AFTER1970s
+FROM MOVIESTAR;
+
