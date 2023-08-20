@@ -129,7 +129,7 @@ AS
 	SELECT *
 	FROM INSERTED
 	WHERE COLOR != 'y'
-	AND TYPE != 'Matrix';
+	OR TYPE != 'Matrix';
 GO
 
 DROP TRIGGER nomatrix;
