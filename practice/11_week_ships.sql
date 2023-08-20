@@ -41,6 +41,10 @@ FROM OUTCOMES
 WHERE RESULT = 'sunk';
 
 -- 6 --
+ALTER TABLE OUTCOMES
+ADD CONSTRAINT default_result
+DEFAULT NULL FOR RESULT;
+
 INSERT INTO sunk_ships
 VALUES ('California', 'Guadalcanal');
 
